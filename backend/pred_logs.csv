@@ -1,0 +1,3 @@
+time,probability,decision,age,gender,education_level,credit_score,annual_income,loan_amount,loan_term,employment_status,marital_status,loan_purpose,interest_rate,grade_subgrade,debt_to_income_ratio
+2026-01-22 21:26:30.904310,0.46271538734436035,MANUAL_REVIEW,30,Male,High School,650.0,500000.0,200000.0,36,Employed,Single,debt_consolidation,12.0,A1,20.0
+2026-01-22 21:33:05.992920,0.46271538734436035,MANUAL_REVIEW,30,Male,High School,650.0,500000.0,200000.0,36,Employed,Single,debt_consolidation,12.0,A1,20.0
