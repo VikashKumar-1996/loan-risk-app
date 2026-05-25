@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.pyc
+venv/
+
+# Jupyter
+*.ipynb
+
+# Data files
+*.csv
+*.zip
+*.parquet
+
+# ML artifacts
+*.h5
+*.pth
+
+# Frontend
+node_modules/
+.next/
+
+# VSCode
+.vscode/
+
+# Environment files
+.env
+.env.local
+
+# OS
+.DS_Store
+
+# Dataset folders
+playground-series-s5e11/
+
+# Streamlit leftovers
+frontend/
