@@ -140,7 +140,7 @@ export default function Home() {
 
     </h2>
 
-   <div className="grid md:grid-cols-2 grid-cols-1 gap-4">      
+   <div className="grid md:grid-cols-2 grid-cols-1 gap-6 mt-8">  
 
 
 
@@ -149,7 +149,11 @@ export default function Home() {
     placeholder="Interest Rate"
     value={formData.interest_rate}
     onChange={handleChange}
-    className="border p-3 rounded"
+    className={`border p-3 rounded-xl focus:outline-none focus:ring-2 transition-all duration-300 hover:shadow-md ${
+  darkMode
+    ? "bg-gray-900 border-gray-700 text-white focus:ring-white"
+    : "bg-white border-gray-300 text-black focus:ring-black"
+}`}
   />
 
   <input
@@ -157,7 +161,11 @@ export default function Home() {
     placeholder="Debt to Income Ratio"
     value={formData.debt_to_income_ratio}
     onChange={handleChange}
-    className="border p-3 rounded"
+    className={`border p-3 rounded-xl focus:outline-none focus:ring-2 transition-all duration-300 hover:shadow-md ${
+  darkMode
+    ? "bg-gray-900 border-gray-700 text-white focus:ring-white"
+    : "bg-white border-gray-300 text-black focus:ring-black"
+}`}
   />
 
   <input
@@ -165,7 +173,11 @@ export default function Home() {
     placeholder="Annual Income"
     value={formData.annual_income}
     onChange={handleChange}
-    className="border p-3 rounded"
+    className={`border p-3 rounded-xl focus:outline-none focus:ring-2 transition-all duration-300 hover:shadow-md ${
+  darkMode
+    ? "bg-gray-900 border-gray-700 text-white focus:ring-white"
+    : "bg-white border-gray-300 text-black focus:ring-black"
+}`}
   />
 
   <input
@@ -173,7 +185,11 @@ export default function Home() {
     placeholder="Credit Score"
     value={formData.credit_score}
     onChange={handleChange}
-    className="border p-3 rounded"
+    className={`border p-3 rounded-xl focus:outline-none focus:ring-2 transition-all duration-300 hover:shadow-md ${
+  darkMode
+    ? "bg-gray-900 border-gray-700 text-white focus:ring-white"
+    : "bg-white border-gray-300 text-black focus:ring-black"
+}`}
   />
 
   <input
@@ -181,14 +197,22 @@ export default function Home() {
     placeholder="Loan Amount"
     value={formData.loan_amount}
     onChange={handleChange}
-    className="border p-3 rounded"
+    className={`border p-3 rounded-xl focus:outline-none focus:ring-2 transition-all duration-300 hover:shadow-md ${
+  darkMode
+    ? "bg-gray-900 border-gray-700 text-white focus:ring-white"
+    : "bg-white border-gray-300 text-black focus:ring-black"
+}`}
   />
 
   <select
     name="gender"
     value={formData.gender}
     onChange={handleChange}
-    className="border p-3 rounded"
+    className={`border p-3 rounded-xl focus:outline-none focus:ring-2 transition-all duration-300 hover:shadow-md ${
+  darkMode
+    ? "bg-gray-900 border-gray-700 text-white focus:ring-white"
+    : "bg-white border-gray-300 text-black focus:ring-black"
+}`}
   >
     <option value="">Select Gender</option>
     <option value="Male">Male</option>
@@ -199,7 +223,11 @@ export default function Home() {
     name="employment_status"
     value={formData.employment_status}
     onChange={handleChange}
-    className="border p-3 rounded"
+    className={`border p-3 rounded-xl focus:outline-none focus:ring-2 transition-all duration-300 hover:shadow-md ${
+  darkMode
+    ? "bg-gray-900 border-gray-700 text-white focus:ring-white"
+    : "bg-white border-gray-300 text-black focus:ring-black"
+}`}
   >
     <option value="">Employment Status</option>
     <option value="Employed">Employed</option>
@@ -211,7 +239,11 @@ export default function Home() {
     name="education_level"
     value={formData.education_level}
     onChange={handleChange}
-    className="border p-3 rounded"
+    className={`border p-3 rounded-xl focus:outline-none focus:ring-2 transition-all duration-300 hover:shadow-md ${
+  darkMode
+    ? "bg-gray-900 border-gray-700 text-white focus:ring-white"
+    : "bg-white border-gray-300 text-black focus:ring-black"
+}`}
   >
     <option value="">Education Level</option>
     <option value="High School">High School</option>
@@ -223,7 +255,11 @@ export default function Home() {
     name="marital_status"
     value={formData.marital_status}
     onChange={handleChange}
-    className="border p-3 rounded"
+    className={`border p-3 rounded-xl focus:outline-none focus:ring-2 transition-all duration-300 hover:shadow-md ${
+  darkMode
+    ? "bg-gray-900 border-gray-700 text-white focus:ring-white"
+    : "bg-white border-gray-300 text-black focus:ring-black"
+}`}
   >
     <option value="">Marital Status</option>
     <option value="Single">Single</option>
@@ -234,7 +270,11 @@ export default function Home() {
     name="loan_purpose"
     value={formData.loan_purpose}
     onChange={handleChange}
-    className="border p-3 rounded"
+    className={`border p-3 rounded-xl focus:outline-none focus:ring-2 transition-all duration-300 hover:shadow-md ${
+  darkMode
+    ? "bg-gray-900 border-gray-700 text-white focus:ring-white"
+    : "bg-white border-gray-300 text-black focus:ring-black"
+}`}
   >
     <option value="">Loan Purpose</option>
     <option value="Education">Education</option>
@@ -247,27 +287,33 @@ export default function Home() {
     placeholder="Grade Subgrade"
     value={formData.grade_subgrade}
     onChange={handleChange}
-    className="border p-3 rounded"
+    className={`border p-3 rounded-xl focus:outline-none focus:ring-2 transition-all duration-300 hover:shadow-md ${
+  darkMode
+    ? "bg-gray-900 border-gray-700 text-white focus:ring-white"
+    : "bg-white border-gray-300 text-black focus:ring-black"
+}`}
   />
 
 </div>
 
       <button
-        onClick={handleSubmit}
-        className={`border p-3 rounded-xl focus:outline-none focus:ring-2 transition-all duration-300 hover:shadow-md ${
-  darkMode
-    ? "bg-gray-900 border-gray-700 text-white focus:ring-white"
-    : "bg-white border-gray-300 text-black focus:ring-black"
-}`}
-      >
-        {loading ? "Predicting..." : "Predict"}
-      </button>
+  onClick={handleSubmit}
+  className="mt-8 w-full bg-black text-white py-4 rounded-2xl text-lg font-semibold hover:scale-[1.02] hover:opacity-90 transition-all duration-300 shadow-lg"
+>
+  {loading ? "Predicting..." : "Predict"}
+</button>
 
       {result && (
 
   <div className="grid md:grid-cols-3 gap-4 mb-6">
 
-  <div className="bg-white rounded-2xl p-6 shadow-lg border">
+  <div
+  className={`rounded-2xl p-6 shadow-lg border transition-all duration-500 ${
+    result.prediction === 1
+      ? "bg-red-100 border-red-300 text-black"
+      : "bg-green-100 border-green-300 text-black"
+  }`}
+>
 
     <p className="text-gray-500 text-sm">
       Risk Score
@@ -279,7 +325,13 @@ export default function Home() {
 
   </div>
 
-  <div className="bg-white rounded-2xl p-6 shadow-lg border">
+  <div
+  className={`rounded-2xl p-6 shadow-lg border transition-all duration-500 ${
+    result.prediction === 1
+      ? "bg-red-200 border-red-400 text-black"
+      : "bg-green-200 border-green-400 text-black"
+  }`}
+>
 
     <p className="text-gray-500 text-sm">
       Decision
@@ -295,13 +347,19 @@ export default function Home() {
 
   </div>
 
-  <div className="bg-white rounded-2xl p-6 shadow-lg border">
+  <div
+  className={`rounded-2xl p-6 shadow-lg border ${
+    darkMode
+      ? "bg-gray-900 border-gray-700 text-white"
+      : "bg-white border-gray-200 text-black"
+  }`}
+>
 
     <p className="text-gray-500 text-sm">
       Model Confidence
     </p>
 
-    <h3 className="text-3xl font-bold mt-2">
+    <h3 className="text-4xl font-bold mt-2">
 
       {(Math.abs(result.probability - 0.5) * 200).toFixed(1)}%
 
@@ -341,8 +399,9 @@ export default function Home() {
           <Tooltip />
 
           <Bar
-            dataKey="importance"
-          />
+              dataKey="importance"
+              radius={[0, 10, 10, 0]}
+            />
 
         </BarChart>
 
