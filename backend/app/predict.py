@@ -1,6 +1,7 @@
 import joblib
 import pandas as pd
 import shap
+import numpy as np
 
 from pathlib import Path
 
@@ -16,8 +17,6 @@ preprocessor = pipeline.named_steps["preprocess"]
 
 model = pipeline.named_steps["model"]
 
-explainer = shap.TreeExplainer(model)
-
 
 def predict_input(data):
 
@@ -31,36 +30,80 @@ def predict_input(data):
 
         probability = model.predict_proba(transformed)[0][1]
 
+        explainer = shap.TreeExplainer(model)
+
         shap_values = explainer.shap_values(transformed)
+
+        if isinstance(shap_values, list):
+
+            shap_row = shap_values[1][0]
+
+        else:
+
+            shap_row = shap_values[0]
+
+        if hasattr(preprocessor, "get_feature_names_out"):
+
+            feature_names = preprocessor.get_feature_names_out()
+
+        else:
+
+            feature_names = [
+                f"feature_{i}"
+                for i in range(transformed.shape[1])
+            ]
 
         feature_importance = {}
 
-        if hasattr(preprocessor, "get_feature_names_out"):
-            feature_names = preprocessor.get_feature_names_out()
-        else:
-            feature_names = []
+        for name, value in zip(feature_names, shap_row):
 
-        for name, value in zip(feature_names, shap_values[0]):
-            clean_name = name.replace("num__", "").replace("cat__", "")
+            clean_name = (
+                str(name)
+                .replace("num__", "")
+                .replace("cat__", "")
+            )
+
+            # Handle numpy arrays safely
+            if isinstance(value, np.ndarray):
+
+                value = value.item()
+
+            # Handle weird string representations
+            value = str(value)
+
+            value = (
+                value.replace("[", "")
+                .replace("]", "")
+            )
+
             feature_importance[clean_name] = float(value)
 
         sorted_features = dict(
+
             sorted(
                 feature_importance.items(),
                 key=lambda x: abs(x[1]),
-                reverse=True,
+                reverse=True
             )[:5]
+
         )
 
         return {
+
             "prediction": int(prediction),
+
             "probability": float(probability),
-            "feature_importance": sorted_features,
+
+            "feature_importance": sorted_features
+
         }
 
     except Exception as e:
+
         print("ERROR:", str(e))
 
         return {
+
             "error": str(e)
+
         }
