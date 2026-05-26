@@ -1,7 +1,7 @@
+
+
 import joblib
 import pandas as pd
-import shap
-import numpy as np
 
 from pathlib import Path
 
@@ -20,6 +20,8 @@ model = pipeline.named_steps["model"]
 
 def predict_input(data):
 
+
+
     try:
 
         df = pd.DataFrame([data])
@@ -30,17 +32,7 @@ def predict_input(data):
 
         probability = model.predict_proba(transformed)[0][1]
 
-        explainer = shap.TreeExplainer(model)
-
-        shap_values = explainer.shap_values(transformed)
-
-        if isinstance(shap_values, list):
-
-            shap_row = shap_values[1][0]
-
-        else:
-
-            shap_row = shap_values[0]
+        importance_scores = model.feature_importances_
 
         if hasattr(preprocessor, "get_feature_names_out"):
 
@@ -50,30 +42,17 @@ def predict_input(data):
 
             feature_names = [
                 f"feature_{i}"
-                for i in range(transformed.shape[1])
+                for i in range(len(importance_scores))
             ]
 
         feature_importance = {}
 
-        for name, value in zip(feature_names, shap_row):
+        for name, value in zip(feature_names, importance_scores):
 
             clean_name = (
                 str(name)
                 .replace("num__", "")
                 .replace("cat__", "")
-            )
-
-            # Handle numpy arrays safely
-            if isinstance(value, np.ndarray):
-
-                value = value.item()
-
-            # Handle weird string representations
-            value = str(value)
-
-            value = (
-                value.replace("[", "")
-                .replace("]", "")
             )
 
             feature_importance[clean_name] = float(value)

@@ -78,11 +78,17 @@ export default function Home() {
   };
   const chartData = result?.feature_importance
   ? Object.entries(result.feature_importance).map(
-      ([key, value]) => ({
-        feature: key,
-        importance: Number(value)
-      })
-    )
+  ([feature, importance]) => ({
+
+    feature: feature
+      .replaceAll("_", " ")
+      .replace("employment status", "")
+      .trim(),
+
+    importance: Math.abs(Number(importance))
+
+  })
+)
   : [];
 
   return (
@@ -371,10 +377,10 @@ export default function Home() {
 )}
 {chartData.length > 0 && (
 <div
-  className={`mt-10 p-8 rounded-2xl shadow-xl border transition-all duration-500 ${
+  className={`mt-10 p-8 rounded-2xl shadow-xl border backdrop-blur-lg transition-all duration-500 ${
     darkMode
-      ? "bg-gray-900 border-gray-700 text-white"
-      : "bg-white border-gray-200 text-black"
+      ? "bg-gray-900/90 border-gray-700 text-white"
+      : "bg-white/90 border-gray-200 text-black"
   }`}
 >
 
@@ -386,26 +392,32 @@ export default function Home() {
 
       <ResponsiveContainer width="100%" height="100%">
 
-        <BarChart data={chartData} layout="vertical">
+        <BarChart
+  data={chartData}
+  layout="vertical"
+  margin={{ top: 20, right: 30, left: 120, bottom: 20 }}
+>
 
-          <XAxis type="number" />
+  <XAxis type="number" />
 
-          <YAxis
-            type="category"
-            dataKey="feature"
-            width={200}
-          />
+  <YAxis
+    dataKey="feature"
+    type="category"
+  />
 
-          <Tooltip />
+  <Tooltip />
 
-          <Bar
-              dataKey="importance"
-              radius={[0, 10, 10, 0]}
-            />
+  <Bar
+    dataKey="importance"
+    fill="#2563eb"
+    radius={[0, 10, 10, 0]}
+  />
 
-        </BarChart>
+</BarChart>
 
       </ResponsiveContainer>
+
+
 
     </div>
 
