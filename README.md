@@ -96,7 +96,7 @@ XGBoost + SHAP
 
 ### FastAPI Backend Documentation
 
-![API Docs](assets/api-docs.png)
+![API Docs](assets/api_docs.png)
 
 ---
 
