@@ -72,25 +72,25 @@ XGBoost + SHAP
 
 ### Homepage (Light Mode)
 
-![Homepage Light](assets/homepage-light.png)
+![Homepage Light](assets/homepage_light.png)
 
 ---
 
 ### Homepage (Dark Mode)
 
-![Homepage Dark](assets/homepage-dark.png)
+![Homepage Dark](assets/homepage_dark.png)
 
 ---
 
 ### Prediction Dashboard
 
-![Prediction Dashboard](assets/prediction-dashboard.png)
+![Prediction Dashboard](assets/prediction_dashboard.png)
 
 ---
 
 ### Feature Importance Analysis
 
-![Feature Importance](assets/feature-importance-chart.png)
+![Feature Importance](assets/feature_importance_chart.png)
 
 ---
 
